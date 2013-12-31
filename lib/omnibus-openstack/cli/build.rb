@@ -47,6 +47,11 @@ module OmnibusOpenstack
         :type => :string,
         :default => nil,
         :desc => "Manifest file to use"
+      class_option :version,
+        :aliases => [:v],
+        :type => :string,
+        :default => nil,
+        :desc => "Version for the resulting artifacts"
       def build()
         include_projects = self.parse_options_list(options[:include]) || DEFAULT_PROJECTS
         exclude_projects = self.parse_options_list(options[:exclude]) || []
@@ -59,15 +64,16 @@ module OmnibusOpenstack
         include_projects -= exclude_projects
         include_projects.unshift 'common'
 
-        say("Let's start building #{include_projects}", :green)
+        say("Let's start building #{include_projects.join}", :green)
 
         Omnibus::Config.override_file = options[:config] || DEFAULT_OVERRIDES_FILE
         Omnibus::Config.project_root = project_root
         Omnibus.configure
 
+        build_version = options[:version] || Omnibus::BuildVersion.new.semver
         include_projects.each { |project|
           proj = Omnibus.project("openstack-#{project}")
-          proj.build_version('1.2.3')
+          proj.build_version(build_version)
           Rake::Task["projects:openstack-#{project}"].invoke
         }
       end
