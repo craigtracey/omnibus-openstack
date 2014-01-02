@@ -1,0 +1,8 @@
+{
+    "keystone": {
+        "source": {
+            "version": "stable/havana",
+            "git": "https://github.com/openstack/keystone.git"
+        }
+    }
+}
