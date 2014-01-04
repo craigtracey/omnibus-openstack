@@ -64,7 +64,7 @@ module OmnibusOpenstack
         include_projects -= exclude_projects
         include_projects.unshift 'common'
 
-        say("Let's start building #{include_projects.join}", :green)
+        say("Let's start building #{include_projects.join(', ')}", :green)
 
         Omnibus::Config.override_file = options[:config] || DEFAULT_OVERRIDES_FILE
         Omnibus::Config.project_root = project_root
