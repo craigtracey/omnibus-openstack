@@ -21,7 +21,10 @@ dependency "libxml2"
 dependency "libxslt"
 dependency "zlib"
 dependency "lxml"
+dependency "bzip2"
 
 dependency "libmysql"
 
 dependency "openstack-common-python"
+
+library_path "#{install_dir}/../common/embedded/lib/python2.7/lib-dynload/"
