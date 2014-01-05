@@ -14,10 +14,10 @@
 # limitations under the License.
 #
 name    "libmysql"
-version "6.1.0"
+version "6.1.3"
 
 source  :url => "http://mirror.cogentco.com/pub/mysql/Connector-C/mysql-connector-c-#{version}-src.tar.gz",
-  :md5 => "02b8cb2bdc2ca281d3d87b0ab8d719c4"
+  :md5 => "490e2dd5d4f86a20a07ba048d49f36b2"
 
 relative_path "mysql-connector-c-#{version}-src"
 
