@@ -34,20 +34,20 @@ module OmnibusOpenstack
       namespace :default
 
       desc "build", "Build us some OpenStack"
-      class_option :include,
+      option :include,
         :aliases => [:i],
         :type => :string,
         :desc => "Comma delimited list of OpenStack components to include"
-      class_option :exclude,
+      option :exclude,
         :aliases => [:e],
         :type => :string,
         :desc => "Comma delimited list of OpenStack components to exclude"
-      class_option :manifest,
+      option :manifest,
         :aliases => [:m],
         :type => :string,
         :default => nil,
         :desc => "Manifest file to use"
-      class_option :version,
+      option :version,
         :aliases => [:v],
         :type => :string,
         :default => nil,
