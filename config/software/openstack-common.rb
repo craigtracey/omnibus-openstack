@@ -24,6 +24,7 @@ dependency "lxml"
 dependency "bzip2"
 
 dependency "libmysql"
+dependency "libsqlite"
 
 dependency "openstack-common-python"
 
