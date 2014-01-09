@@ -52,6 +52,11 @@ module OmnibusOpenstack
         :type => :string,
         :default => nil,
         :desc => "Version for the resulting artifacts"
+      option :cachedir,
+        :aliases => [:c],
+        :type => :string,
+        :default => ".cache",
+        :desc => "Directory to cache build elements to."
       def build()
         include_projects = self.parse_options_list(options[:include]) || DEFAULT_PROJECTS
         exclude_projects = self.parse_options_list(options[:exclude]) || []
@@ -65,6 +70,12 @@ module OmnibusOpenstack
         include_projects.unshift 'common'
 
         say("Let's start building #{include_projects.join(', ')}", :green)
+
+        say("Caching to: #{options[:cachedir]}", :green)
+        Omnibus::Config.cache_dir = File.join(options[:cachedir], "cache")
+        Omnibus::Config.source_dir = File.join(options[:cachedir], "source")
+        Omnibus::Config.build_dir = File.join(options[:cachedir], "build")
+        Omnibus::Config.package_dir = File.join(options[:cachedir], "package")
 
         Omnibus::Config.override_file = options[:config] || DEFAULT_OVERRIDES_FILE
         Omnibus::Config.project_root = project_root
