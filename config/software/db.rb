@@ -1,5 +1,5 @@
 #
-# Copyright 2013, Craig Tracey <craigtracey@gmail.com>
+# Copyright 2014, Craig Tracey <craigtracey@gmail.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,21 +13,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-name    "openstack-common"
+name    "db"
+version "5.3.21"
 
-dependency "python"
-dependency "pip"
-dependency "libxml2"
-dependency "libxslt"
-dependency "zlib"
-dependency "lxml"
-dependency "bzip2"
+source  :url => "http://download.oracle.com/berkeley-db/db-#{version}.tar.gz",
+  :md5 => "3fda0b004acdaa6fa350bfc41a3b95ca"
 
-dependency "libmysql"
-dependency "libsqlite"
-dependency "db"
+relative_path "db-#{version}/build_unix"
 
-dependency "openstack-common-python"
+env = {
+  "LD_RUN_PATH" => "#{install_dir}/embedded/lib",
+}
 
-library_path "#{install_dir}/../common/embedded/lib"
-library_path "#{install_dir}/../common/embedded/lib/python2.7/lib-dynload/"
+build do
+  command "../dist/configure --enable-sql --prefix=#{install_dir}/embedded"
+  command "make", :env => env
+  command "make install"
+end
