@@ -21,6 +21,6 @@ source  :url => "http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz",
 relative_path "bzip2-#{version}"
 
 build do
-  command "make"
-  command "make PREFIX=#{install_dir}/embedded/usr install"
+  command "make -f Makefile-libbz2_so"
+  command "make install PREFIX=#{install_dir}/embedded"
 end
