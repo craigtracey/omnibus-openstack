@@ -15,13 +15,14 @@
 #
 name    "openstack-common"
 
+dependency "bzip2"
 dependency "python"
 dependency "pip"
 dependency "libxml2"
 dependency "libxslt"
 dependency "zlib"
 dependency "lxml"
-dependency "bzip2"
+dependency "libreadline"
 
 dependency "libmysql"
 dependency "libsqlite"
