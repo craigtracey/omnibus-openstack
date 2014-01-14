@@ -31,3 +31,5 @@ build do
     "--system-site-packages"].join(" "), :env => env
   command "#{install_dir}/bin/python setup.py install", :env => env
 end
+
+library_path "#{install_dir}/../common/embedded/lib"
