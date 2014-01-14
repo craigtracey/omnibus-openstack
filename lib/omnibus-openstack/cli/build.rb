@@ -18,34 +18,20 @@
 require 'omnibus'
 require 'omnibus-openstack/cli/base'
 require 'pathname'
+require 'yaml'
 
 module OmnibusOpenstack
   module CLI
     class Build < Base
 
-      DEFAULT_OVERRIDES_FILE = "openstack-config.json"
-
-      DEFAULT_PROJECTS = [
-        'keystone',
-        'glance',
-        'nova'
-      ]
-
       namespace :default
 
       desc "build", "Build us some OpenStack"
-      option :include,
-        :aliases => [:i],
-        :type => :string,
-        :desc => "Comma delimited list of OpenStack components to include"
-      option :exclude,
-        :aliases => [:e],
-        :type => :string,
-        :desc => "Comma delimited list of OpenStack components to exclude"
       option :manifest,
         :aliases => [:m],
         :type => :string,
         :default => nil,
+        :required => true,
         :desc => "Manifest file to use"
       option :version,
         :aliases => [:v],
@@ -58,18 +44,15 @@ module OmnibusOpenstack
         :default => ".cache",
         :desc => "Directory to cache build elements to."
       def build()
-        include_projects = self.parse_options_list(options[:include]) || DEFAULT_PROJECTS
-        exclude_projects = self.parse_options_list(options[:exclude]) || []
 
-        intersect_projects = include_projects & exclude_projects
-        if !intersect_projects.empty?
-          say("You have specified #{intersect_projects.join(', ')} in both included and excluded projects.")
+        manifest = YAML.load_file((options[:manifest]))
+        openstack_projects = manifest.keys
+
+        if openstack_projects.empty?
+          say("Manifest does not include any OpenStack projects to build", :yellow)
         end
 
-        include_projects -= exclude_projects
-        include_projects.unshift 'common'
-
-        say("Let's start building #{include_projects.join(', ')}", :green)
+        say("Let's start building #{openstack_projects.join(', ')}", :green)
 
         say("Caching to: #{options[:cachedir]}", :green)
         Omnibus::Config.cache_dir = File.join(options[:cachedir], "cache")
@@ -77,16 +60,25 @@ module OmnibusOpenstack
         Omnibus::Config.build_dir = File.join(options[:cachedir], "build")
         Omnibus::Config.package_dir = File.join(options[:cachedir], "package")
 
-        Omnibus::Config.override_file = options[:config] || DEFAULT_OVERRIDES_FILE
         Omnibus::Config.project_root = project_root
         Omnibus.configure
 
         build_version = options[:version] || Omnibus::BuildVersion.new.semver
-        include_projects.each { |project|
-          proj = Omnibus.project("openstack-#{project}")
-          proj.build_version(build_version)
-          Rake::Task["projects:openstack-#{project}"].invoke
-        }
+
+        project_files = Omnibus.project_files
+        proj = Omnibus.project("openstack")
+        proj.build_version(build_version)
+
+        os_projfile_name = File.join(project_root, "config/software/openstack-project.rb")
+        os_projfile = Omnibus.software_map([os_projfile_name])["openstack-project"]
+
+        openstack_projects.each do |osproject|
+          dep_software = Omnibus::Software.load(os_projfile, proj, manifest, osproject)
+          proj.dependency(osproject)
+        end
+        proj.rerender_tasks
+        Rake::Task["projects:openstack"].invoke
+
       end
       default_task "build"
 
