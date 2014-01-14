@@ -13,11 +13,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-name    "glance"
-version "0f3f716c5a415e5d52262f0d7a577aa13b114aef"
-source  :git => "https://github.com/openstack/glance.git"
+name    "neutron"
+version "b5c4152ac9958e173d785894f96f34704b6641c2"
+source  :git => "https://github.com/openstack/neutron.git"
 
-relative_path "glance"
+relative_path "neutron"
 
 env = {
   "PYTHONPATH"      => "#{install_dir}/../common/embedded/lib/ptyhon2.7/site-packages",

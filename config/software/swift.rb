@@ -13,15 +13,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-name    "glance"
-version "0f3f716c5a415e5d52262f0d7a577aa13b114aef"
-source  :git => "https://github.com/openstack/glance.git"
+name    "swift"
+version "2f3526c559fe53ce904b735a81dee6de46127176"
+source  :git => "https://github.com/openstack/swift.git"
 
-relative_path "glance"
+relative_path "swift"
 
 env = {
   "PYTHONPATH"      => "#{install_dir}/../common/embedded/lib/ptyhon2.7/site-packages",
-  "LD_LIBRARY_PATH" => "#{install_dir}/../common/embedded/lib"
+  "LD_LIBRARY_PATH" => "#{install_dir}/../common/embedded/lib",
+  "LDFLAGS" => "-L#{install_dir}/embedded/lib -I#{install_dir}/embedded/include",
+  "CFLAGS" => "-L#{install_dir}/embedded/lib -I#{install_dir}/embedded/include -I/opt/openstack/common/embedded/lib/libffi-3.0.13/include"
 }
 
 build do

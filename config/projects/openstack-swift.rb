@@ -13,24 +13,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-name    "openstack-common"
+name          "openstack-swift"
+maintainer    "Craig Tracey <craigtracey@gmail.com>"
+homepage      "http://www.craigtracey.com"
 
-dependency "bzip2"
-dependency "python"
-dependency "pip"
-dependency "libxml2"
-dependency "libxslt"
-dependency "zlib"
-dependency "lxml"
-dependency "libreadline"
-dependency "libyaml"
-dependency "libffi"
+replaces      "openstack-swift"
+install_path  "/opt/openstack/swift"
 
-dependency "libmysql"
-dependency "libsqlite"
-dependency "db"
+# creates required build directories
+dependency    "preparation"
 
-dependency "openstack-common-python"
+# version manifest file
+dependency    "version-manifest"
+dependency    "swift"
 
-library_path "#{install_dir}/../common/embedded/lib"
-library_path "#{install_dir}/../common/embedded/lib/python2.7/lib-dynload/"
+runtime_dependency "openstack-common"
+
+exclude       "\.git*"
+exclude       "bundler\/git"

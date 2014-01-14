@@ -26,9 +26,13 @@ module OmnibusOpenstack
       DEFAULT_OVERRIDES_FILE = "openstack-config.json"
 
       DEFAULT_PROJECTS = [
-        'keystone',
+        'cinder',
         'glance',
-        'nova'
+        'horizon',
+        'keystone',
+        'neutron',
+        'nova',
+        'swift'
       ]
 
       namespace :default

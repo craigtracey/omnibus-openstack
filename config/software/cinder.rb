@@ -13,11 +13,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-name    "glance"
-version "0f3f716c5a415e5d52262f0d7a577aa13b114aef"
-source  :git => "https://github.com/openstack/glance.git"
+name    "cinder"
+version "ec8ce6cdf236154b4ba0b392202fa7bd7c7c9b61"
+source  :git => "https://github.com/openstack/cinder.git"
 
-relative_path "glance"
+relative_path "cinder"
 
 env = {
   "PYTHONPATH"      => "#{install_dir}/../common/embedded/lib/ptyhon2.7/site-packages",

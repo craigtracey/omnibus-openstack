@@ -13,11 +13,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-name    "glance"
-version "0f3f716c5a415e5d52262f0d7a577aa13b114aef"
-source  :git => "https://github.com/openstack/glance.git"
+name    "horizon"
+version "2c1f1f39565ca7bdc8a7bde2ce45f2a0019357da"
+source  :git => "https://github.com/openstack/horizon.git"
 
-relative_path "glance"
+relative_path "horizon"
 
 env = {
   "PYTHONPATH"      => "#{install_dir}/../common/embedded/lib/ptyhon2.7/site-packages",
