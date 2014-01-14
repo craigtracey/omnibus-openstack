@@ -29,6 +29,3 @@ dependency "libsqlite"
 dependency "db"
 
 dependency "openstack-common-python"
-
-library_path "#{install_dir}/../common/embedded/lib"
-library_path "#{install_dir}/../common/embedded/lib/python2.7/lib-dynload/"

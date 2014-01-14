@@ -20,5 +20,5 @@ build do
   command "#{install_dir}/embedded/bin/pip install virtualenv"
   command "#{install_dir}/embedded/bin/pip install pbr"
   command "#{install_dir}/embedded/bin/pip install d2to1"
-#  command "#{install_dir}/embedded/bin/pip install mysql-python"
+  command "#{install_dir}/embedded/bin/pip install bz2file"
 end
