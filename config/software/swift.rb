@@ -23,7 +23,7 @@ env = {
   "PYTHONPATH"      => "#{install_dir}/../common/embedded/lib/ptyhon2.7/site-packages",
   "LD_LIBRARY_PATH" => "#{install_dir}/../common/embedded/lib",
   "LDFLAGS" => "-L#{install_dir}/embedded/lib -I#{install_dir}/embedded/include",
-  "CFLAGS" => "-L#{install_dir}/embedded/lib -I#{install_dir}/embedded/include"
+  "CFLAGS" => "-L#{install_dir}/embedded/lib -I#{install_dir}/embedded/include -I/opt/openstack/common/embedded/lib/libffi-3.0.13/include"
 }
 
 build do
