@@ -21,7 +21,9 @@ relative_path "swift"
 
 env = {
   "PYTHONPATH"      => "#{install_dir}/../common/embedded/lib/ptyhon2.7/site-packages",
-  "LD_LIBRARY_PATH" => "#{install_dir}/../common/embedded/lib"
+  "LD_LIBRARY_PATH" => "#{install_dir}/../common/embedded/lib",
+  "LDFLAGS" => "-L#{install_dir}/embedded/lib -I#{install_dir}/embedded/include",
+  "CFLAGS" => "-L#{install_dir}/embedded/lib -I#{install_dir}/embedded/include"
 }
 
 build do
