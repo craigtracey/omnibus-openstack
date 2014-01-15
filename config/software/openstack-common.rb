@@ -23,6 +23,7 @@ dependency "libxslt"
 dependency "zlib"
 dependency "lxml"
 dependency "libreadline"
+dependency "libyaml"
 
 dependency "libmysql"
 dependency "libsqlite"
