@@ -29,7 +29,7 @@ env = {
 build do
   command ["#{install_dir}/embedded/bin/virtualenv",
     "-p #{install_dir}/embedded/bin/python",
-    "/opt/openstack/#{name}",
+    "#{install_dir}/#{name}",
     "--system-site-packages"].join(" "), :env => env
   command "#{install_dir}/#{name}/bin/python setup.py install", :env => env
 end
