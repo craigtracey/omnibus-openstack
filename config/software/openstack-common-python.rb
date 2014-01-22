@@ -18,9 +18,11 @@ name "openstack-common-python"
 env = {
   "CFLAGS"  => ["-I#{install_dir}/embedded/include",
                 "-I#{install_dir}/embedded/include/libxml2",
+                "-I#{install_dir}/embedded/include/libvirt",
                 "-I#{install_dir}/embedded/include/libxslt"].join(" "),
   "LDFLAGS" => "-L#{install_dir}/embedded/lib",
-  "PATH"    => "#{install_dir}/embedded/bin:#{ENV["PATH"]}"
+  "PATH"    => "#{install_dir}/embedded/bin:#{ENV["PATH"]}",
+  "PKG_CONFIG_PATH" => "#{install_dir}/embedded/lib/pkgconfig"
 }
 
 build do
