@@ -30,6 +30,5 @@ dependency "numpy"
 dependency "libmysql"
 dependency "libsqlite"
 dependency "db"
-dependency "libvirt"
 
 dependency "openstack-common-python"
