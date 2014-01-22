@@ -15,6 +15,10 @@
 #
 name "openstack-common-python"
 
+whitelist_file "#{install_dir}/embedded/lib/python2.7/site-packages/libvirtmod_qemu.so"
+whitelist_file "#{install_dir}/embedded/lib/python2.7/site-packages/libvirtmod_lxc.so"
+whitelist_file "#{install_dir}/embedded/lib/python2.7/site-packages/libvirtmod.so"
+
 env = {
   "CFLAGS"  => ["-I#{install_dir}/embedded/include",
                 "-I#{install_dir}/embedded/include/libxml2",
