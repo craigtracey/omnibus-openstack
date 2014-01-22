@@ -29,6 +29,5 @@ dependency "libyaml"
 dependency "libffi"
 dependency "libmysql"
 dependency "db"
-dependency "libvirt"
 
 dependency "openstack-common-python"
