@@ -38,4 +38,5 @@ build do
   command "#{install_dir}/embedded/bin/pip install python-memcached", :env => env
   command "#{install_dir}/embedded/bin/pip install bz2file", :env => env
   command "#{install_dir}/embedded/bin/pip install libvirt-python", :env => env
+  command "#{install_dir}/embedded/bin/pip install numpy", :env => env
 end
