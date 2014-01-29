@@ -26,6 +26,7 @@ dependency "libreadline"
 dependency "libyaml"
 dependency "libffi"
 dependency "numpy"
+dependency "libffi"
 
 dependency "libmysql"
 dependency "libsqlite"
