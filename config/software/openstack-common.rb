@@ -24,6 +24,7 @@ dependency "zlib"
 dependency "lxml"
 dependency "libreadline"
 dependency "libyaml"
+dependency "libffi"
 
 dependency "libmysql"
 dependency "libsqlite"
