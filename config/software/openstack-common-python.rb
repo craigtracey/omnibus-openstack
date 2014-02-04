@@ -24,7 +24,7 @@ env = {
                 "-I#{install_dir}/embedded/include/libxml2",
                 "-I#{install_dir}/embedded/include/libxslt"].join(" "),
   "LDFLAGS" => "-L#{install_dir}/embedded/lib",
-  "PATH"    => "#{install_dir}/embedded/bin:#{ENV["PATH"]}",
+  "PATH"    => "#{install_dir}/embedded/bin:#{ENV["PATH"]}"
 }
 
 build do
