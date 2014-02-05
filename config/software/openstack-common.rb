@@ -27,7 +27,6 @@ dependency "libyaml"
 dependency "libffi"
 dependency "numpy"
 dependency "libffi"
-dependency "numpy"
 
 dependency "libmysql"
 dependency "libsqlite"

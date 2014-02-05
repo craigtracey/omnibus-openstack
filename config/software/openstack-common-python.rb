@@ -30,14 +30,12 @@ env = {
 build do
   command "#{install_dir}/embedded/bin/pip install distribute --upgrade", :env => env
   command "#{install_dir}/embedded/bin/pip install virtualenv", :env => env
-  command "#{install_dir}/embedded/bin/pip install pbr", :env => env
+  #command "#{install_dir}/embedded/bin/pip install pbr", :env => env
   command "#{install_dir}/embedded/bin/pip install d2to1", :env => env
   command "#{install_dir}/embedded/bin/pip install bz2file", :env => env
   command "#{install_dir}/embedded/bin/pip install mysql-python", :env => env
   command "#{install_dir}/embedded/bin/pip install pysqlite", :env => env
   command "#{install_dir}/embedded/bin/pip install python-memcached", :env => env
   command "#{install_dir}/embedded/bin/pip install bz2file", :env => env
-  command "#{install_dir}/embedded/bin/pip install libvirt-python", :env => env
-  command "#{install_dir}/embedded/bin/pip install numpy", :env => env
   command "#{install_dir}/embedded/bin/pip install libvirt-python", :env => env
 end
