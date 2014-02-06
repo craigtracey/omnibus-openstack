@@ -30,6 +30,7 @@ env = {
 build do
   command "#{install_dir}/embedded/bin/pip install distribute --upgrade", :env => env
   command "#{install_dir}/embedded/bin/pip install virtualenv", :env => env
+  command "#{install_dir}/embedded/bin/pip install virtualenvwrapper", :env => env
   # TODO remove the following version restriction when we update keystone to havana
   command "#{install_dir}/embedded/bin/pip install pbr==0.5.23", :env => env
   command "#{install_dir}/embedded/bin/pip install d2to1", :env => env
