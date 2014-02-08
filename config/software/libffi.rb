@@ -29,5 +29,5 @@ build do
   command "./configure --prefix=#{install_dir}/embedded"
   command "make", :env => env
   command "make install"
-  command "mv #{install_dir}/embedded/lib/libffi-#{version}/include/* #{install_dir}/include/"
+  command "mv #{install_dir}/embedded/lib/libffi-#{version}/include/* #{install_dir}/embedded/include/"
 end
