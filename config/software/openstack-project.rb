@@ -31,6 +31,6 @@ build do
     "-p #{install_dir}/embedded/bin/python",
     "#{install_dir}/#{name}",
     "--system-site-packages"].join(" "), :env => env
+  command "rsync -avz --exclude '.git' . #{install_dir}/#{name}"
   command "#{install_dir}/#{name}/bin/python setup.py install", :env => env
-  command "if [ -d ./etc ]; then cp -R ./etc #{install_dir}/#{name}/etc; fi"
 end
