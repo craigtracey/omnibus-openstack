@@ -33,6 +33,24 @@ module OmnibusOpenstack
         :default => nil,
         :required => true,
         :desc => "Manifest file to use"
+      option :name,
+        :aliases => [:n],
+        :type => :string,
+        :default => nil,
+        :required => false,
+        :desc => "Package name"
+      option :install_path,
+        :aliases => [:i],
+        :type => :string,
+        :default => nil,
+        :required => false,
+        :desc => "Install path"
+      option :description,
+        :aliases => [:d],
+        :type => :string,
+        :default => nil,
+        :required => false,
+        :desc => "Package description"
       option :version,
         :aliases => [:v],
         :type => :string,
@@ -67,6 +85,9 @@ module OmnibusOpenstack
 
         project_files = Omnibus.project_files
         proj = Omnibus.project("openstack")
+        proj.install_path(options[:install_path]) if !options[:install_path].nil?
+        proj.package_name(options[:name]) if !options[:name].nil?
+        proj.package_description(options[:description]) if !options[:description].nil?
         proj.build_version(build_version)
 
         os_projfile_name = File.join(project_root, "config/software/openstack-project.rb")
