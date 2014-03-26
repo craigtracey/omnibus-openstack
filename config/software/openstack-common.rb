@@ -16,6 +16,7 @@
 name    "openstack-common"
 
 dependency "bzip2"
+dependency "libsqlite"
 dependency "python"
 dependency "pip"
 dependency "libxml2"
@@ -27,9 +28,7 @@ dependency "libyaml"
 dependency "libffi"
 dependency "numpy"
 dependency "libffi"
-
 dependency "libmysql"
-dependency "libsqlite"
 dependency "db"
 
 dependency "openstack-common-python"
