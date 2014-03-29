@@ -94,11 +94,18 @@ module OmnibusOpenstack
         os_projfile = Omnibus.software_map([os_projfile_name])["openstack-project"]
 
         openstack_projects.each do |osproject|
-          dep_software = Omnibus::Software.load(os_projfile, proj, manifest, osproject)
+
+          project_data = manifest[osproject]
+          override_ver = {}
+          override_ver[osproject] = project_data['version'] if project_data.has_key?('version')
+
+          dep_software = Omnibus::Software.load(os_projfile, proj, override_ver, osproject)
+          dep_software.source({:git => project_data['source']['git']}) if project_data.has_key?('source')
+
+          proj.library.component_added(dep_software)
           proj.dependency(osproject)
         end
-        proj.rerender_tasks
-        Rake::Task["projects:openstack"].invoke
+        proj.build_me
 
       end
       default_task "build"
