@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 name    "libpostgresql"
-version "9.2.4"
+default_version "9.2.4"
 
 source  :url => "http://ftp.postgresql.org/pub/source/v9.2.4/postgresql-9.2.4.tar.gz",
   :md5 => "52df0a9e288f02d7e6e0af89ed4dcfc6"

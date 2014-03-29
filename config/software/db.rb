@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 name    "db"
-version "5.3.21"
+default_version "5.3.21"
 
 source  :url => "http://download.oracle.com/berkeley-db/db-#{version}.tar.gz",
   :md5 => "3fda0b004acdaa6fa350bfc41a3b95ca"

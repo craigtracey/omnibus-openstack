@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 name    "libsqlite"
-version "3080200"
+default_version "3080200"
 
 source  :url => "http://www.sqlite.org/2013/sqlite-autoconf-#{version}.tar.gz",
   :md5 => "f62206713e6a08d4ccbc60b1fd712a1a"

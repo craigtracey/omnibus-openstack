@@ -16,7 +16,7 @@
 
 ### THIS IS A GENERIC PYTHON VIRTUALENV BUILDING CONFIG!!! ###
 
-version "master"
+default_version "master"
 source  :git => "https://github.com/openstack/#{name}.git"
 
 relative_path "#{name}"

@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 name    "libmysql"
-version "6.1.3"
+default_version "6.1.3"
 
 source  :url => "http://mirrors.sohu.com/mysql/Connector-C/mysql-connector-c-#{version}-src.tar.gz",
   :md5 => "490e2dd5d4f86a20a07ba048d49f36b2"

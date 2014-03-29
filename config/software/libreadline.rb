@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 name    "libreadline"
-version "6.2"
+default_version "6.2"
 
 source  :url => "ftp://ftp.cwru.edu/pub/bash/readline-#{version}.tar.gz",
   :md5 => "67948acb2ca081f23359d0256e9a271c"

@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 name    "lxml"
-version "3.2.1"
+default_version "3.2.1"
 source  :url => "https://pypi.python.org/packages/source/l/lxml/lxml-3.2.1.tar.gz",
   :md5 => "d183ccd6bbd5ca139e9db9e9a675787e"
 
