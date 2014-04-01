@@ -99,7 +99,10 @@ module OmnibusOpenstack
           override_ver = {}
           override_ver[osproject] = project_data['version'] if project_data.has_key?('version')
 
-          dep_software = Omnibus::Software.load(os_projfile, proj, override_ver, osproject)
+          # this is an ugly hack but name is otherwise not exposed adequately:
+          # https://github.com/opscode/omnibus-ruby/pull/123
+          ENV['omnibus_openstack_project']
+          dep_software = Omnibus::Software.load(os_projfile, proj, override_ver)
           dep_software.source({:git => project_data['source']['git']}) if project_data.has_key?('source')
 
           proj.library.component_added(dep_software)
