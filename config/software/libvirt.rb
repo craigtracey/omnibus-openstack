@@ -1,5 +1,5 @@
 #
-# Copyright 2013, Craig Tracey <craigtracey@gmail.com>
+# Copyright 2014, Craig Tracey <craigtracey@gmail.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,23 +13,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-name    "openstack-common"
+name    "libvirt"
+version "1.2.3"
 
-dependency "bzip2"
-dependency "python"
-dependency "pip"
-dependency "libxml2"
-dependency "libxslt"
-dependency "zlib"
-dependency "lxml"
-dependency "libreadline"
-dependency "libyaml"
-dependency "libffi"
+source  :url => "http://libvirt.org/sources/libvirt-#{version}.tar.gz",
+  :md5 => "ad1602a2fcc3609c83b885a28f3eecbd"
 
-dependency "libmysql"
-dependency "libsqlite"
-dependency "db"
+relative_path "libvirt-#{version}"
 
-dependency "libvirt"
+env = {
+  "LD_RUN_PATH" => "#{install_dir}/embedded/lib",
+}
 
-dependency "openstack-common-python"
+build do
+  command "./configure --prefix=#{install_dir}/embedded"
+  command "make", :env => env
+  command "make install"
+end
