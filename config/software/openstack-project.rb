@@ -16,9 +16,9 @@
 
 ### THIS IS A GENERIC PYTHON VIRTUALENV BUILDING CONFIG!!! ###
 
+name    ENV['omnibus_openstack_project']
 default_version "master"
 source  :git => "https://github.com/openstack/#{name}.git"
-name    ENV['omnibus_openstack_project']
 
 relative_path "#{name}"
 
