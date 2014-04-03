@@ -101,7 +101,7 @@ module OmnibusOpenstack
 
           # this is an ugly hack but name is otherwise not exposed adequately:
           # https://github.com/opscode/omnibus-ruby/pull/123
-          ENV['omnibus_openstack_project']
+          ENV['omnibus_openstack_project'] = osproject
           dep_software = Omnibus::Software.load(os_projfile, proj, override_ver)
           dep_software.source({:git => project_data['source']['git']}) if project_data.has_key?('source')
 
