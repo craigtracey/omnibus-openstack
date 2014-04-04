@@ -13,15 +13,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-name    "libvirt"
-version "1.2.3"
+name    "libdevicemapper"
+version "2.02.98"
 
-source  :url => "http://libvirt.org/sources/libvirt-#{version}.tar.gz",
-  :md5 => "ad1602a2fcc3609c83b885a28f3eecbd"
+source  :url => "ftp://sources.redhat.com/pub/lvm2/LVM2.#{version}.tgz",
+  :md5 => "1ce5b7f9981e1d02dfd1d3857c8d9fbe"
 
-relative_path "libvirt-#{version}"
-
-dependency "libdevicemapper"
+relative_path "LVM2.#{version}"
 
 env = {
   "LD_RUN_PATH" => "#{install_dir}/embedded/lib",
@@ -29,6 +27,5 @@ env = {
 
 build do
   command "./configure --prefix=#{install_dir}/embedded"
-  command "make", :env => env
-  command "make install"
+  command "make install_device-mapper", :env => env
 end
