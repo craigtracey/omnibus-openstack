@@ -1,5 +1,5 @@
 #
-# Copyright 2013, Craig Tracey <craigtracey@gmail.com>
+# Copyright 2013, Craig Tracey <craigtracey@@gmail.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -33,7 +33,10 @@ build do
     "#{install_dir}/#{name}",
     "--system-site-packages"].join(" "), :env => env
   command "rsync -avz --exclude '.git' . #{install_dir}/#{name}"
-  command "[ -f requirements.txt ] && #{install_dir}/#{name}/bin/pip install -r requirements.txt", :env => env
-  command "[ -f tools/pip-requires ] && #{install_dir}/#{name}/bin/pip install -r tools/pip-requires", :env => env
+  if File.exist?("#{project_dir}/requirements.txt")
+    command "#{install_dir}/#{name}/bin/pip install -r requirements.txt", :env => env
+  elsif File.exist?("#{project_dir}/tools/pip-requires")
+    command "#{install_dir}/#{name}/bin/pip install -r tools/pip-requires", :env => env
+  end
   command "#{install_dir}/#{name}/bin/python setup.py install", :env => env
 end
