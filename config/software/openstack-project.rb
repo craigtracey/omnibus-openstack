@@ -33,5 +33,7 @@ build do
     "#{install_dir}/#{name}",
     "--system-site-packages"].join(" "), :env => env
   command "rsync -avz --exclude '.git' . #{install_dir}/#{name}"
+  command "[ -f requirements.txt ] && #{install_dir}/#{name}/bin/pip install -r requirements.txt", :env => env
+  command "[ -f tools/pip-requires ] && #{install_dir}/#{name}/bin/pip install -r tools/pip-requires", :env => env
   command "#{install_dir}/#{name}/bin/python setup.py install", :env => env
 end
