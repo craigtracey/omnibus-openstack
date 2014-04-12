@@ -24,43 +24,41 @@ module OmnibusOpenstack
   module CLI
     class Build < Base
 
-      namespace :default
-
-      desc "build", "Build us some OpenStack"
-      option :manifest,
+      method_option :manifest,
         :aliases => [:m],
         :type => :string,
         :default => nil,
         :required => true,
         :desc => "Manifest file to use"
-      option :name,
+      class_option :name,
         :aliases => [:n],
         :type => :string,
         :default => nil,
         :required => false,
         :desc => "Package name"
-      option :install_path,
+      class_option :install_path,
         :aliases => [:i],
         :type => :string,
         :default => nil,
         :required => false,
         :desc => "Install path"
-      option :description,
+      class_option :description,
         :aliases => [:d],
         :type => :string,
         :default => nil,
         :required => false,
         :desc => "Package description"
-      option :version,
+      class_option :version,
         :aliases => [:v],
         :type => :string,
         :default => nil,
         :desc => "Version for the resulting artifacts"
-      option :cachedir,
+      class_option :cachedir,
         :aliases => [:c],
         :type => :string,
         :default => ".cache",
         :desc => "Directory to cache build elements to."
+      desc "", "Build us some OpenStack"
       def build()
 
         manifest = YAML.load_file((options[:manifest]))

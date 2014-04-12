@@ -30,9 +30,6 @@ module OmnibusOpenstack
         super
       end
 
-      register(Build, 'build', 'build', 'Build us some OpenStack.')
-      tasks["build"].options = OmnibusOpenstack::CLI::Build.class_options
-
       class_option :debug,
         :aliases => [:d],
         :type => :boolean,
@@ -42,6 +39,9 @@ module OmnibusOpenstack
       def version
         say("OmnibusOpenstack: #{OmnibusOpenstack::VERSION}", :yellow)
       end
+
+      desc 'build [COMMAND]', 'Perform build-related tasks'
+      subcommand 'build', OmnibusOpenstack::CLI::Build
 
       def self.start(*args)
         begin
