@@ -1,6 +1,9 @@
 omnibus-openstack
 =================
-A tool for building full-stack packages for OpenStack.
+A tool for building full-stack custom packages for [OpenStack](http://openstack.org). It leverages the [omnibus](https://github.com/opscode/omnibus-ruby) framework by [Chef](http://getchef.com).
+
+This repo provides the omnibus-openstack executable only. If you want to make use of this tool for creating your own bespoke OpenStack packages, please reference [omnibus-openstack-build](https://github.com/craigtracey/omnibus-openstack-build).
+
 
 License and Author
 ==================
