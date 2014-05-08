@@ -16,6 +16,7 @@
 name    "openstack-common"
 
 dependency "bzip2"
+dependency "gdbm"
 dependency "libsqlite"
 dependency "python"
 dependency "pip"
