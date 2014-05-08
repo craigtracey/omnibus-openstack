@@ -24,10 +24,15 @@ env = {
                 "-I#{install_dir}/embedded/include/libxml2",
                 "-I#{install_dir}/embedded/include/libxslt"].join(" "),
   "LDFLAGS" => "-L#{install_dir}/embedded/lib",
-  "PATH"    => "#{install_dir}/embedded/bin:#{ENV["PATH"]}",
-  "PKG_CONFIG_PATH" => ["#{install_dir}/embedded/lib/pkgconfig",
-                        "/usr/lib/pkgconfig"].join(":")
+  "PATH"    => "#{install_dir}/embedded/bin:#{ENV["PATH"]}"
 }
+
+xenv = env.merge(
+  {
+    "PKG_CONFIG_PATH" => ["#{install_dir}/embedded/lib/pkgconfig",
+                          "/usr/lib/pkgconfig"].join(":")
+  }
+)
 
 build do
   command "#{install_dir}/embedded/bin/pip install distribute --upgrade", :env => env
@@ -42,5 +47,5 @@ build do
   command "#{install_dir}/embedded/bin/pip install python-memcached", :env => env
   command "#{install_dir}/embedded/bin/pip install bz2file", :env => env
   command "#{install_dir}/embedded/bin/pip install numpy", :env => env
-  command "#{install_dir}/embedded/bin/pip install libvirt-python", :env => env
+  command "#{install_dir}/embedded/bin/pip install libvirt-python", :env => xenv
 end
