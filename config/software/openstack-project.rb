@@ -33,10 +33,10 @@ build do
     "#{install_dir}/#{name}",
     "--system-site-packages"].join(" "), :env => env
   command "rsync -avz --exclude '.git' . #{install_dir}/#{name}"
-  if File.exist?("#{project_dir}/requirements.txt")
-    command "#{install_dir}/#{name}/bin/pip install -r requirements.txt", :env => env
-  elsif File.exist?("#{project_dir}/tools/pip-requires")
-    command "#{install_dir}/#{name}/bin/pip install -r tools/pip-requires", :env => env
+  if File.exist?("#{install_dir}/#{name}/requirements.txt")
+    command "#{install_dir}/#{name}/bin/pip install -r #{install_dir}/#{name}/requirements.txt", :env => env
+  elsif File.exist?("#{install_dir}/#{name}/tools/pip-requires")
+    command "#{install_dir}/#{name}/bin/pip install -r #{install_dir}/#{name}/tools/pip-requires", :env => env
   end
   command "#{install_dir}/#{name}/bin/python setup.py install", :env => env
 end
