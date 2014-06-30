@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 name    "libvirt"
-version "1.2.3"
+default_version "1.2.3"
 
 source  :url => "http://libvirt.org/sources/libvirt-#{version}.tar.gz",
   :md5 => "ad1602a2fcc3609c83b885a28f3eecbd"

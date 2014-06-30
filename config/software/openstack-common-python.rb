@@ -15,18 +15,31 @@
 #
 name "openstack-common-python"
 
+whitelist_file "#{install_dir}/embedded/lib/python2.7/site-packages/libvirtmod_qemu.so"
+whitelist_file "#{install_dir}/embedded/lib/python2.7/site-packages/libvirtmod_lxc.so"
+whitelist_file "#{install_dir}/embedded/lib/python2.7/site-packages/libvirtmod.so"
+
 env = {
   "CFLAGS"  => ["-I#{install_dir}/embedded/include",
                 "-I#{install_dir}/embedded/include/libxml2",
                 "-I#{install_dir}/embedded/include/libxslt"].join(" "),
   "LDFLAGS" => "-L#{install_dir}/embedded/lib",
-  "PATH"    => "#{install_dir}/embedded/bin:#{ENV["PATH"]}"
+  "PATH"    => "#{install_dir}/embedded/bin:#{ENV["PATH"]}",
 }
+
+xenv = env.merge(
+  {
+    "PKG_CONFIG_PATH" => ["#{install_dir}/embedded/lib/pkgconfig",
+                          "/usr/lib/pkgconfig"].join(":")
+  }
+)
 
 build do
   command "#{install_dir}/embedded/bin/pip install distribute --upgrade", :env => env
   command "#{install_dir}/embedded/bin/pip install virtualenv", :env => env
-  command "#{install_dir}/embedded/bin/pip install pbr", :env => env
+  command "#{install_dir}/embedded/bin/pip install setuptools --upgrade", :env => env
+  # TODO remove the following version restriction when we update keystone to havana
+  command "#{install_dir}/embedded/bin/pip install pbr==0.5.23", :env => env
   command "#{install_dir}/embedded/bin/pip install d2to1", :env => env
   command "#{install_dir}/embedded/bin/pip install bz2file", :env => env
   command "#{install_dir}/embedded/bin/pip install mysql-python", :env => env
@@ -34,5 +47,5 @@ build do
   command "#{install_dir}/embedded/bin/pip install python-memcached", :env => env
   command "#{install_dir}/embedded/bin/pip install bz2file", :env => env
   command "#{install_dir}/embedded/bin/pip install numpy", :env => env
-  command "#{install_dir}/embedded/bin/pip install libvirt-python", :env => env
+  command "#{install_dir}/embedded/bin/pip install libvirt-python", :env => xenv
 end
