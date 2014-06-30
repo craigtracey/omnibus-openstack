@@ -16,7 +16,7 @@
 name    "libmysql"
 default_version "6.1.3"
 
-source :url => "http://mirror.cogentco.com/pub/mysql/Connector-C/mysql-connector-c-#{version}-src.tar.gz",
+source  :url => "http://mirrors.sohu.com/mysql/Connector-C/mysql-connector-c-#{version}-src.tar.gz",
   :md5 => "490e2dd5d4f86a20a07ba048d49f36b2"
 
 relative_path "mysql-connector-c-#{version}-src"
