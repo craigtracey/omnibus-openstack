@@ -27,7 +27,6 @@ dependency "lxml"
 dependency "libreadline"
 dependency "libyaml"
 dependency "libffi"
-dependency "numpy"
 
 dependency "libmysql"
 dependency "db"
